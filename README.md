@@ -63,16 +63,16 @@ npm run test:e2e
 ## Estructura del Proyecto
 
 - `src/` - Código fuente
-    - `restaurante/` - Módulo de restaurantes
-    - `restaurante-plato/` - Módulo de relación entre restaurantes y platos
-    - `plato/` - Módulo de platos
+    - `restaurant/` - Módulo de restaurantes
+    - `restaurant-dish/` - Módulo de relación entre restaurantes y platos
+    - `dish/` - Módulo de platos
     - `shared/` - Utilidades compartidas
 
 ## Módulos Disponibles
 
-- **Restaurante**: Gestión de restaurantes
-- **Plato**: Gestión de restaurantes
-- **CRestaurante-Plato**: Asociación de REstaurante con Plato
+- **Restaurant**: Gestión de restaurantes
+- **Dish**: Gestión de restaurantes
+- **Restaurant-Dish**: Asociación de REstaurante con Plato
 
 ## Endpoints API
 
@@ -88,9 +88,9 @@ La API proporciona los siguientes endpoints para cada entidad:
 
 ### Endpoints Específicos
 
-- **Restaurantes**: `/restaurantes`
-- **Platos**: `/platos`
+- **Restaurants**: `/restaurants`
+- **Dishes**: `/dishes`
 
 ### Relaciones entre Entidades
 
-- **Restaurantes-Platos**: `/restaurantes/:restauranteId/platos`
+- **Restaurants-Dishes**: `/restaurants/:restaurantId/dishes`
