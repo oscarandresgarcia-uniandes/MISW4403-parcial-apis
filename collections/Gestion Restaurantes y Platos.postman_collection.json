@@ -800,40 +800,7 @@
 							]
 						}
 					},
-					"response": [
-						{
-							"name": "200 OK - Asociar un plato a un restaurante",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"url": {
-									"raw": "{{baseURL}}/restaurants/{{restaurant_id_assoc}}/dishes/{{dish_id_assoc}}",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"restaurants",
-										"{{restaurant_id_assoc}}",
-										"dishes",
-										"{{dish_id_assoc}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json",
-									"description": "",
-									"type": "text"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"id\": \"c5d3c1b7-6e4f-5g2h-8i9j-7k6l5m4n3o2p\",\n    \"name\": \"Andrés Carne de Res\",\n    \"address\": \"Calle 82 #12-21\",\n    \"page\": \"www.andrescarnederes.com\",\n    \"cuisineType\": \"Colombian\",\n    \"dishes\": [\n        {\n            \"id\": \"d5d3c1b7-6e4f-5g2h-8i9j-7k6l5m4n3o2p\",\n            \"name\": \"Bandeja Paisa\",\n            \"description\": \"Plato típico colombiano con frijoles, arroz, carne, chicharrón, huevo y plátano\",\n            \"price\": 35000,\n            \"dishCategory\": \"main\"\n        }\n    ]\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "Obtener todos los platos de un restaurante",
