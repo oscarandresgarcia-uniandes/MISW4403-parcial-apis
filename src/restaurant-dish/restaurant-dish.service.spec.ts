@@ -9,7 +9,6 @@ import {
 import { DishEntity, DishCategory } from '../dish/dish.entity/dish.entity';
 import { RestaurantDishService } from './restaurant-dish.service';
 import { faker } from '@faker-js/faker';
-import { BusinessLogicException } from '../shared/errors/business-errors';
 
 describe('RestaurantDishService', () => {
   let service: RestaurantDishService;

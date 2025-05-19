@@ -8,7 +8,6 @@ import {
 } from './restaurant.entity/restaurant.entity';
 import { RestaurantService } from './restaurant.service';
 import { faker } from '@faker-js/faker';
-import { BusinessLogicException } from '../shared/errors/business-errors';
 
 describe('RestaurantService', () => {
   let service: RestaurantService;

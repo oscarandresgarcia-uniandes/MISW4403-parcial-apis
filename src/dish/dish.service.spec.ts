@@ -5,7 +5,6 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { DishEntity, DishCategory } from './dish.entity/dish.entity';
 import { DishService } from './dish.service';
 import { faker } from '@faker-js/faker';
-import { BusinessLogicException } from '../shared/errors/business-errors';
 
 describe('DishService', () => {
   let service: DishService;
