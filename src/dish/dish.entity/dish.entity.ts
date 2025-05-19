@@ -23,12 +23,8 @@ export class DishEntity {
   @Column('decimal', { precision: 10, scale: 2 })
   price: number;
 
-  @Column({
-    type: 'enum',
-    enum: DishCategory,
-    default: DishCategory.MAIN
-  })
-  dishCategory: DishCategory;
+  @Column()
+  dishCategory: string;
 
   @ManyToMany(() => RestaurantEntity, restaurant => restaurant.dishes)
   restaurants: RestaurantEntity[];

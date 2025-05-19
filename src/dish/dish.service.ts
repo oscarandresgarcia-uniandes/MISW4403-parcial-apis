@@ -106,7 +106,7 @@ export class DishService {
     await this.dishRepository.remove(dish);
   }
 
-  private isValidDishCategory(category: DishCategory): boolean {
-    return Object.values(DishCategory).includes(category);
+  private isValidDishCategory(category: string): boolean {
+    return Object.values(DishCategory).includes(category as DishCategory);
   }
 }

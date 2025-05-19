@@ -25,12 +25,8 @@ export class RestaurantEntity {
   @Column()
   page: string;
 
-  @Column({
-    type: 'enum',
-    enum: CuisineType,
-    default: CuisineType.INTERNATIONAL
-  })
-  cuisineType: CuisineType;
+  @Column()
+  cuisineType: string;
 
   @ManyToMany(() => DishEntity, dish => dish.restaurants)
   @JoinTable()

@@ -100,7 +100,7 @@ export class RestaurantService {
     await this.restaurantRepository.remove(restaurant);
   }
 
-  private isValidCuisineType(cuisineType: CuisineType): boolean {
-    return Object.values(CuisineType).includes(cuisineType);
+  private isValidCuisineType(cuisineType: string): boolean {
+    return Object.values(CuisineType).includes(cuisineType as CuisineType);
   }
 }

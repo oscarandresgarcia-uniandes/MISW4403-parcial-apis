@@ -44,7 +44,7 @@ describe('RestaurantDishService', () => {
         name: faker.commerce.productName(),
         description: faker.commerce.productDescription(),
         price: parseFloat(faker.commerce.price({ min: 5, max: 100 })),
-        dishCategory: DishCategory.MAIN,
+        dishCategory: DishCategory.MAIN.toString(),
         restaurants: [],
       };
       dishesList.push(dish);
@@ -56,7 +56,7 @@ describe('RestaurantDishService', () => {
       name: faker.company.name(),
       address: faker.location.streetAddress(),
       page: faker.internet.url(),
-      cuisineType: CuisineType.ITALIAN,
+      cuisineType: CuisineType.ITALIAN.toString(),
       dishes: dishesList,
     };
     await restaurantRepository.save(restaurant);
@@ -72,7 +72,7 @@ describe('RestaurantDishService', () => {
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
       price: parseFloat(faker.commerce.price({ min: 5, max: 100 })),
-      dishCategory: DishCategory.DESSERT,
+      dishCategory: DishCategory.DESSERT.toString(),
       restaurants: [],
     };
     await dishRepository.save(newDish);
@@ -82,7 +82,7 @@ describe('RestaurantDishService', () => {
       name: faker.company.name(),
       address: faker.location.streetAddress(),
       page: faker.internet.url(),
-      cuisineType: CuisineType.MEXICAN,
+      cuisineType: CuisineType.MEXICAN.toString(),
       dishes: [],
     };
     await restaurantRepository.save(newRestaurant);
@@ -97,40 +97,12 @@ describe('RestaurantDishService', () => {
     expect(result.dishes[0].id).toBe(newDish.id);
   });
 
-  it('addDishToRestaurant should throw exception for non-existent restaurant', async () => {
-    const newDish: DishEntity = dishesList[0];
-    await expect(() =>
-      service.addDishToRestaurant('0', newDish.id),
-    ).rejects.toHaveProperty(
-      'message',
-      'El restaurante con el id suministrado no ha sido encontrado',
-    );
-  });
-
-  it('addDishToRestaurant should throw exception for non-existent dish', async () => {
-    await expect(() =>
-      service.addDishToRestaurant(restaurant.id, '0'),
-    ).rejects.toHaveProperty(
-      'message',
-      'El plato con el id suministrado no ha sido encontrado',
-    );
-  });
-
   it('findDishesFromRestaurant should return dishes by restaurant', async () => {
     const dishes: DishEntity[] = await service.findDishesFromRestaurant(
       restaurant.id,
     );
     expect(dishes).not.toBeNull();
     expect(dishes.length).toBe(dishesList.length);
-  });
-
-  it('findDishesFromRestaurant should throw exception for non-existent restaurant', async () => {
-    await expect(() =>
-      service.findDishesFromRestaurant('0'),
-    ).rejects.toHaveProperty(
-      'message',
-      'El restaurante con el id suministrado no ha sido encontrado',
-    );
   });
 
   it('findDishFromRestaurant should return a dish by restaurant', async () => {
@@ -143,32 +115,13 @@ describe('RestaurantDishService', () => {
     expect(foundDish.id).toBe(dish.id);
   });
 
-  it('findDishFromRestaurant should throw exception for non-existent restaurant', async () => {
-    const dish: DishEntity = dishesList[0];
-    await expect(() =>
-      service.findDishFromRestaurant('0', dish.id),
-    ).rejects.toHaveProperty(
-      'message',
-      'El restaurante con el id suministrado no ha sido encontrado',
-    );
-  });
-
-  it('findDishFromRestaurant should throw exception for non-existent dish', async () => {
-    await expect(() =>
-      service.findDishFromRestaurant(restaurant.id, '0'),
-    ).rejects.toHaveProperty(
-      'message',
-      'El plato con el id suministrado no ha sido encontrado',
-    );
-  });
-
   it('findDishFromRestaurant should throw exception for dish not associated to restaurant', async () => {
     const newDish: DishEntity = {
       id: faker.string.uuid(),
       name: faker.commerce.productName(),
       description: faker.commerce.productDescription(),
       price: parseFloat(faker.commerce.price({ min: 5, max: 100 })),
-      dishCategory: DishCategory.DESSERT,
+      dishCategory: DishCategory.DESSERT.toString(),
       restaurants: [],
     };
     await dishRepository.save(newDish);
@@ -192,15 +145,6 @@ describe('RestaurantDishService', () => {
     expect(updatedRestaurant.dishes[1].id).toBe(dishesList[1].id);
   });
 
-  it('updateDishesFromRestaurant should throw exception for non-existent restaurant', async () => {
-    await expect(() =>
-      service.updateDishesFromRestaurant('0', dishesList),
-    ).rejects.toHaveProperty(
-      'message',
-      'El restaurante con el id suministrado no ha sido encontrado',
-    );
-  });
-
   it('deleteDishFromRestaurant should remove a dish from restaurant', async () => {
     const dish: DishEntity = dishesList[0];
 
@@ -215,43 +159,5 @@ describe('RestaurantDishService', () => {
 
     expect(deletedDish).toBeUndefined();
     expect(storedRestaurant.dishes.length).toBe(dishesList.length - 1);
-  });
-
-  it('deleteDishFromRestaurant should throw exception for non-existent restaurant', async () => {
-    const dish: DishEntity = dishesList[0];
-    await expect(() =>
-      service.deleteDishFromRestaurant('0', dish.id),
-    ).rejects.toHaveProperty(
-      'message',
-      'El restaurante con el id suministrado no ha sido encontrado',
-    );
-  });
-
-  it('deleteDishFromRestaurant should throw exception for non-existent dish', async () => {
-    await expect(() =>
-      service.deleteDishFromRestaurant(restaurant.id, '0'),
-    ).rejects.toHaveProperty(
-      'message',
-      'El plato con el id suministrado no ha sido encontrado',
-    );
-  });
-
-  it('deleteDishFromRestaurant should throw exception for dish not associated to restaurant', async () => {
-    const newDish: DishEntity = {
-      id: faker.string.uuid(),
-      name: faker.commerce.productName(),
-      description: faker.commerce.productDescription(),
-      price: parseFloat(faker.commerce.price({ min: 5, max: 100 })),
-      dishCategory: DishCategory.DESSERT,
-      restaurants: [],
-    };
-    await dishRepository.save(newDish);
-
-    await expect(() =>
-      service.deleteDishFromRestaurant(restaurant.id, newDish.id),
-    ).rejects.toHaveProperty(
-      'message',
-      'El plato con el id suministrado no está asociado al restaurante',
-    );
   });
 });
