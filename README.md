@@ -5,7 +5,7 @@ API RESTful para la gestión de gestión de restaurantes.
 ## Requisitos
 
 - Node.js 16 o superior
-- Docker y Docker Compose
+- Docker y Docker Compose (opcional)
 
 ## Configuración del Entorno
 
@@ -22,7 +22,11 @@ API RESTful para la gestión de gestión de restaurantes.
 
 3. Configurar variables de entorno: crear un archivo `.env` basado en `.env.example` y modificar según sea necesario.
 
-## Ejecutar PostgreSQL con Docker
+## Ejecutar PostgreSQL sin Docker (opcional)
+
+Con tu instancia de base de datos PostgreSQL corriendo, crea una base de datos llamada `gestion_restaurantes`. Debes tener en cuenta que la app tratar;a de escuchar ehn el puereto 5433 según la configuración de tu .env. y `app.module.ts` el puereto a 5432 que es el puerto por defecto si no vas a usar Docker. Esto se hizo así por si tienes otra base de datos corriendo ene el puerto opor defecto, no entre en conflcito con el puerto 5432
+
+## Ejecutar PostgreSQL con Docker (recomendado)
 
 Para iniciar la base de datos PostgreSQL utilizando Docker Compose:
 
