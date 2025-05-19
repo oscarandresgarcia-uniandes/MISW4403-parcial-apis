@@ -45,6 +45,7 @@ Esto iniciará:
    ```
    npm run start:dev
    ```
+4. La aplicación se ejecutará en el puerto http://localhost:4100/api/v1/ 
 
 ## Pruebas
 
